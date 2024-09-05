@@ -16,4 +16,5 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.retrofit2.adapters.result)
+    implementation(libs.okhttp.logging.interceptor)
 }

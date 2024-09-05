@@ -21,7 +21,7 @@ import java.util.Date
  */
 @Serializable
 class ArticlesDto (
-    @SerialName("source") val sourceDto: SourceDto?,
+    @SerialName("source") val source: SourceDto?,
     @SerialName("author") val author: String?,
     @SerialName("title") val title: String?,
     @SerialName("description") val description: String?,

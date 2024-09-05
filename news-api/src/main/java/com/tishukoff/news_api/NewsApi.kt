@@ -9,7 +9,7 @@ import com.tishukoff.news_api.models.Response
 import com.tishukoff.news_api.models.SortBy
 import com.tishukoff.news_api.utils.NewsApiKeyInterceptor
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.create
@@ -23,16 +23,16 @@ interface NewsApi {
      * API details [here] (https://newsapi.org/docs/endpoints/everything)
      */
 
-    @GET("/everything")
+    @GET("everything")
     suspend fun getNews(
         @Query("q") query: String? = null,
         @Query("from") data: Date? = null,
         @Query("to") to: Date? = null,
-        @Query("language") language: List<Language>? = null,
-        @Query("sortBy") sortBy: SortBy? = null,
+        @Query("language") language: List<@JvmSuppressWildcards Language>? = null,
+        @Query("sortBy") sortBy: SortBy? = SortBy.RELEVANCY,
         @Query("pageSize") @IntRange(from = 0, to = 100) pageSize: Int = 50,
         @Query("page") @IntRange(from = 1) page: Int = 1,
-    ): Result<Response<List<ArticlesDto>>>
+    ): Result<Response<ArticlesDto>>
 }
 
 fun NewsApi(
@@ -48,7 +48,7 @@ private fun retrofit(
     okHttpClient: OkHttpClient?,
     json: Json
 ): Retrofit {
-    val jsonConvectorFactory = json.asConverterFactory(MediaType.get("application/json"))
+    val jsonConvectorFactory = json.asConverterFactory("application/json".toMediaType())
 
     val modifiedOkHttpClient = (okHttpClient?.newBuilder() ?: OkHttpClient.Builder())
         .addInterceptor(NewsApiKeyInterceptor(apiKey))

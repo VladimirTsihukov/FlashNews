@@ -21,7 +21,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "FlashNews"
 include(":app")
-include(":news-api")
-include(":news-database")
 include(":feature:news:main")
-include(":news-data")
+include(":news-api")
+include(":news-common")
+include(":news-data:api")
+include(":news-data:impl")
+include(":news-database")
+include(":news-ui-kit")

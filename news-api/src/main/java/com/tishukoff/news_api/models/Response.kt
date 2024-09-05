@@ -13,5 +13,5 @@ import kotlinx.serialization.Serializable
 class Response<E>(
     @SerialName("status") val status: String,
     @SerialName("totalResults") val totalResults: Int,
-    @SerialName("articles") val articles: E,
+    @SerialName("articles") val articles: List<E>,
 )
