@@ -617,7 +617,7 @@ style:
             - '2'
             - '0x'
         ignoreHashCodeFunction: true
-        ignorePropertyDeclaration: false
+        ignorePropertyDeclaration: true
         ignoreLocalVariableDeclaration: false
         ignoreConstantDeclaration: true
         ignoreCompanionObjectPropertyDeclaration: true

@@ -22,7 +22,7 @@ retrofit2-adapters-result = "1.0.12"
 retrofit2-kotlinx-serialization-converter = "1.0.0"
 room = "2.6.1"
 coil = "2.7.0"
-detekt = "1.23.3"
+detekt = "1.23.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
