@@ -11,7 +11,7 @@ espressoCore = "3.6.1"
 javax-inject = "1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-kotlin = "2.0.0"
+kotlin = "2.0.10"
 kotlin-serialization-json = "1.7.1"
 kotlinx-coroutines = "1.9.0-RC.2"
 ksp = "2.0.10-1.0.24"
@@ -22,6 +22,7 @@ retrofit2-adapters-result = "1.0.12"
 retrofit2-kotlinx-serialization-converter = "1.0.0"
 room = "2.6.1"
 coil = "2.7.0"
+detekt = "1.23.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -81,3 +82,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

@@ -5,13 +5,10 @@ import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
@@ -117,8 +114,9 @@ private fun ArticleItem(
 }
 
 @SuppressLint("UnrememberedMutableState")
-@Composable
+@Suppress("UnusedPrivateMember")
 @Preview(showBackground = true)
+@Composable
 private fun NewsMainScreenPreview() {
     FlashNewsTheme {
         NewsMainScreen(state = mutableStateOf(ArticlesDataState.ServerSuccess(ArticlesVo.LIST_FOR_PREVIEW)))

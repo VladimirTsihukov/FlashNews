@@ -23,6 +23,7 @@ interface NewsApi {
      * API details [here] (https://newsapi.org/docs/endpoints/everything)
      */
 
+    @Suppress("LongParameterList")
     @GET("everything")
     suspend fun getNews(
         @Query("q") query: String? = null,

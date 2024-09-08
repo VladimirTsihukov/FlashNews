@@ -4,12 +4,10 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tishukoff.flashnews.feature.news.main.models.ArticleVo
 import com.tishukoff.flashnews.news_common.AppDispatchers
 import com.tishukoff.flashnews.news_data.api.models.ArticlesDataState
 import com.tishukoff.flashnews.news_data.api.repository.ArticlesInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -6,6 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
 
+@Suppress("LongParameterList")
 @Entity(tableName = "articles")
 class ArticlesDbo(
     @PrimaryKey(autoGenerate = true) val id: Int,
