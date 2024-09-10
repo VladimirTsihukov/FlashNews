@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "FlashNews"
 include(":app")
+include(":baselineprofile")
 include(":feature:news:main")
 include(":news-api")
 include(":news-common")

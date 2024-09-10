@@ -1,4 +1,4 @@
-package com.tishukoff.flashnews
+package com.tishukoff.flashnews.ui
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

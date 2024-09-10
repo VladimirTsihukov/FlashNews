@@ -299,7 +299,6 @@ exceptions:
         active: true
         exceptionNames:
             - 'Error'
-            - 'Exception'
             - 'RuntimeException'
             - 'Throwable'
 

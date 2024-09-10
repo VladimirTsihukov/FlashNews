@@ -1,4 +1,4 @@
-package com.tishukoff.flashnews
+package com.tishukoff.flashnews.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
