@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -7,14 +9,18 @@ plugins {
     alias(libs.plugins.baselineprofile)
 }
 
+val localProperties = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
+}
+
 android {
     namespace = "com.tishukoff.flashnews"
-    compileSdk = 34
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     defaultConfig {
         applicationId = "com.tishukoff.flashnews"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.target.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -23,8 +29,11 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField("String", "NEWS_API_KEY", "\"c04f28655a5a4818bf8b1dc8ef543ec1\"")
-        buildConfigField("String", "NEWS_API_BASE_URL", "\"https://newsapi.org/v2/\"")
+        val apiKey: String = localProperties.getProperty("NEWS_API_KEY_LOCAL") ?: ""
+        val baseUrl: String = localProperties.getProperty("NEWS_API_BASE_URL_LOCAL") ?: ""
+
+        buildConfigField("String", "NEWS_API_KEY", "\"$apiKey\"")
+        buildConfigField("String", "NEWS_API_BASE_URL", "\"$baseUrl\"")
 
         resourceConfigurations += setOf("en", "ru")
         ndk {
@@ -32,11 +41,14 @@ android {
         }
     }
     signingConfigs {
+        val passwordLocal = localProperties.getProperty("PASSWORD_LOCAL") ?: ""
+        val keyAliesLocal = localProperties.getProperty("KEY_ALIAS_LOCAL") ?: ""
+
         create("release") {
             storeFile = File(rootDir, "flashNews.keystore")
-            storePassword = "123456"
-            keyPassword = "123456"
-            keyAlias = "V.Tishukov"
+            storePassword = passwordLocal
+            keyPassword = passwordLocal
+            keyAlias = keyAliesLocal
         }
     }
 
@@ -75,15 +87,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:news:main"))
-    implementation(project(":news-api"))
-    implementation(project(":news-common"))
-    implementation(project(":news-data:api"))
-    implementation(project(":news-data:impl"))
-    implementation(project(":news-database"))
-    implementation(project(":news-ui-kit"))
+    implementation(projects.feature.news.main)
+    implementation(projects.newsApi)
+    implementation(projects.newsCommon)
+    implementation(projects.newsData.api)
+    implementation(projects.newsData.impl)
+    implementation(projects.newsDatabase)
+    implementation(projects.newsUiKit)
 
-    baselineProfile(":baselineprofile")
+    baselineProfile(projects.baselineprofile)
 
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)

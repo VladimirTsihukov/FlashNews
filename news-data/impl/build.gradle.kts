@@ -33,9 +33,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":news-database"))
-    implementation(project(":news-api"))
-    implementation(project(":news-data:api"))
+    implementation(projects.newsDatabase)
+    implementation(projects.newsApi)
+    implementation(projects.newsData.api)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlin.coroutines.android)

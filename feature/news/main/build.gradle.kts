@@ -36,9 +36,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":news-common"))
-    implementation(project(":news-data:api"))
-    implementation(project(":news-ui-kit"))
+    implementation(projects.newsCommon)
+    implementation(projects.newsData.api)
+    implementation(projects.newsUiKit)
 
     implementation(platform(libs.androidx.compose.bom))
 
