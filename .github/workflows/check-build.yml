@@ -15,6 +15,13 @@ jobs:
                   distribution: 'temurin'
                   java-version: 17
 
+            - name: Set up local.properties
+              run: |
+                   echo "KEY_ALIAS_LOCAL=${{ secrets.KEY_ALIAS_LOCAL }}" >> local.properties
+                   echo "NEWS_API_BASE_URL_LOCAL=${{ secrets.NEWS_API_BASE_URL_LOCAL }}" >> local.properties      
+                   echo "NEWS_API_KEY_LOCAL=${{ secrets.NEWS_API_KEY_LOCAL }}" >> local.properties      
+                   echo "PASSWORD_LOCAL=${{ secrets.PASSWORD_LOCAL }}" >> local.properties      
+
             - uses: gradle/gradle-build-action@v3
               with:
                   cache-disabled: true
