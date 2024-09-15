@@ -34,5 +34,9 @@ gradlePlugin {
             id = "com.tishukoff.flashnews.androidConventionPlugin"
             implementationClass = "com.tishukoff.flashnews.buildlogic.AndroidConventionPlugin"
         }
+        register("newsAndroidComposeConventionPlugin") {
+            id = "com.tishukoff.flashnews.androidComposeConventionPlugin"
+            implementationClass = "com.tishukoff.flashnews.buildlogic.AndroidComposeConventionPlugin"
+        }
     }
 }

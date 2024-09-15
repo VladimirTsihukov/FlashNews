@@ -31,6 +31,11 @@ fun DependencyHandler.debugImplementation(dependencyNotation: Any): Dependency? 
     add("debugImplementation", dependencyNotation)
 
 internal fun Project.configureAndroid() {
+    with(pluginManager) {
+        apply("com.android.library")
+        apply("org.jetbrains.kotlin.android")
+    }
+
     extensions.configure<com.android.build.gradle.LibraryExtension> {
         compileSdk = libs.findVersion("android-SDK-compile").get().toString().toInt()
 
