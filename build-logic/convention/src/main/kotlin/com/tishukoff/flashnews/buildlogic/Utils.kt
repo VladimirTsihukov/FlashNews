@@ -1,12 +1,12 @@
 package com.tishukoff.flashnews.buildlogic
 
-import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -30,16 +30,13 @@ fun DependencyHandler.androidTestImplementation(dependencyNotation: Any): Depend
 fun DependencyHandler.debugImplementation(dependencyNotation: Any): Dependency? =
     add("debugImplementation", dependencyNotation)
 
-internal fun Project.configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-) {
-    commonExtension.apply {
-        compileSdk = 34
+internal fun Project.configureAndroid() {
+    extensions.configure<com.android.build.gradle.LibraryExtension> {
+        compileSdk = libs.findVersion("android-SDK-compile").get().toString().toInt()
 
         defaultConfig {
-            minSdk = 26
+            minSdk = libs.findVersion("android-SDK-min").get().toString().toInt()
         }
-
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_1_8
             targetCompatibility = JavaVersion.VERSION_1_8
@@ -49,7 +46,7 @@ internal fun Project.configureKotlinAndroid(
     configureKotlin()
 }
 
-private fun Project.configureKotlin() {
+internal fun Project.configureKotlin() {
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_1_8)

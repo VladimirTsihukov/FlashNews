@@ -99,3 +99,4 @@ android-test = { id = "com.android.test", version.ref = "agp" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
 
 news-kotlin-library = { id = "com.tishukoff.flashnews.kotlinLibrary", version = "unspecified"}
+news-android-convetion-plugin = { id = "com.tishukoff.flashnews.androidConventionPlugin", version = "unspecified"}

@@ -30,5 +30,9 @@ gradlePlugin {
             id = "com.tishukoff.flashnews.kotlinLibrary"
             implementationClass = "com.tishukoff.flashnews.buildlogic.KotlinLibraryConventionPlugin"
         }
+        register("newAndroidConventionPlugin") {
+            id = "com.tishukoff.flashnews.androidConventionPlugin"
+            implementationClass = "com.tishukoff.flashnews.buildlogic.AndroidConventionPlugin"
+        }
     }
 }
